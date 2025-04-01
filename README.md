@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Agora SDK vs Amazon IVS 对比分析
 
 本项目提供了Agora SDK与Amazon IVS在音视频技术方面的深度对比分析，包括架构特性、音视频技术能力、网络适应性、平台支持、应用场景表现以及设备覆盖等多个维度。
