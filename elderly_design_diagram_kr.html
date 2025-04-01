@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노인 친화적 디자인 부족 다이어그램</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .diagram {
+            width: 800px;
+            height: 600px;
+            position: relative;
+        }
+        .box {
+            position: absolute;
+            width: 200px;
+            height: 70px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: white;
+            font-size: 14px;
+            padding: 5px;
+        }
+        .center-box {
+            width: 150px;
+            height: 60px;
+            border-radius: 10px;
+            background-color: #e0e0e0;
+        }
+        .main-box {
+            width: 180px;
+            height: 80px;
+            border-radius: 15px;
+            border: 2px solid #000;
+        }
+        .arrow {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            border: none;
+        }
+        .arrow::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid #aaa;
+            border-right: 2px solid #aaa;
+            transform: rotate(135deg);
+        }
+        .arrow-down {
+            transform: rotate(90deg);
+        }
+        .arrow-right {
+            transform: rotate(0deg);
+        }
+        .arrow-left {
+            transform: rotate(180deg);
+        }
+        .arrow-label {
+            position: absolute;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram">
+        <!-- 중앙 박스 -->
+        <div class="box center-box" style="top: 70px; left: 325px;">디지털 제품</div>
+        
+        <!-- 왼쪽 열 -->
+        <div class="box" style="top: 70px; left: 75px;">면향 전형적인<br>디지털 제품 사용자</div>
+        <div class="box" style="top: 180px; left: 75px;">노인 사용자의<br>특성을 고려하지 않음</div>
+        <div class="box" style="top: 290px; left: 75px;">대부분의 노인 사용자<br>사용 어려움</div>
+        <div class="box" style="top: 400px; left: 75px;">사용 경험 불만족<br>부정적 인상 형성</div>
+        
+        <!-- 오른쪽 열 -->
+        <div class="box" style="top: 70px; left: 575px;">면향<br>노인 사용자</div>
+        <div class="box" style="top: 180px; left: 575px;">일관성 없는<br>노인 친화적 디자인</div>
+        <div class="box" style="top: 290px; left: 575px;">사용자 간 차이<br>부정적 표시 명확</div>
+        <div class="box" style="top: 400px; left: 575px;">사용 가치 낮음<br>사용자 흥미 부족</div>
+        
+        <!-- 중앙 하단 박스 -->
+        <div class="box main-box" style="top: 400px; left: 310px;">사용 동기 상실<br>학습 의지 부족</div>
+        
+        <!-- 중앙 화살표 -->
+        <div class="arrow arrow-down" style="top: 140px; left: 335px;"></div>
+        <div style="position: absolute; top: 170px; left: 335px; text-align: center;">노인 사용자 사용</div>
+        <div class="arrow arrow-down" style="top: 230px; left: 335px;"></div>
+        <div class="arrow arrow-down" style="top: 320px; left: 335px;"></div>
+        
+        <!-- 왼쪽 화살표 -->
+        <div class="arrow arrow-down" style="top: 140px; left: 85px;"></div>
+        <div class="arrow arrow-down" style="top: 250px; left: 85px;"></div>
+        <div class="arrow arrow-down" style="top: 360px; left: 85px;"></div>
+        <div class="arrow arrow-right" style="top: 410px; left: 275px;"></div>
+        <div class="arrow-label" style="top: 390px; left: 230px;">사용 불가</div>
+        
+        <!-- 오른쪽 화살표 -->
+        <div class="arrow arrow-down" style="top: 140px; left: 585px;"></div>
+        <div class="arrow arrow-down" style="top: 250px; left: 585px;"></div>
+        <div class="arrow arrow-down" style="top: 360px; left: 585px;"></div>
+        <div class="arrow arrow-left" style="top: 410px; left: 495px;"></div>
+        <div class="arrow-label" style="top: 390px; left: 510px;">사용 안함</div>
+        
+        <!-- 좌우 화살표 -->
+        <div class="arrow arrow-left" style="top: 70px; left: 275px;"></div>
+        <div class="arrow-label" style="top: 50px; left: 230px;">일반<br>제품</div>
+        <div class="arrow arrow-right" style="top: 70px; left: 495px;"></div>
+        <div class="arrow-label" style="top: 50px; left: 510px;">노인<br>제품</div>
+    </div>
+</body>
+</html>

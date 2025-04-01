@@ -1,0 +1,185 @@
+{
+  "page_title": "Agora SDK vs Amazon IVS - 詳細な機能比較",
+  "header": {
+    "title": "Agora SDK vs Amazon IVS",
+    "subtitle": "リアルタイム音声・映像技術の詳細分析"
+  },
+  "sections": {
+    "architecture": {
+      "title": "コア技術アーキテクチャの比較",
+      "overview": "Agora SDKは統一されたSDKアーキテクチャを採用し、すべての機能を統合した単一のSDKを提供していますが、Amazon IVSは分離型アーキテクチャを採用し、ブロードキャストSDKとプレーヤーを分離しています<span class=\"citation\">[1]</span>。このアーキテクチャの違いは、開発体験と機能の拡張性に直接影響します<span class=\"citation\">[4]</span>。"
+    },
+    "audio_video": {
+      "title": "音声・映像技術能力の比較",
+      "overview": "Agoraは音声・映像処理技術において、特にコーデックサポート、音声強化、映像効果の面で顕著な優位性を持っています<span class=\"citation\">[1]</span>。以下のチャートは、主要な音声・映像技術指標における両プラットフォームの比較を示しています<span class=\"citation\">[3]</span>：",
+      "agora_advantages": "Agora SDK 優位技術",
+      "ivs_advantages": "Amazon IVS 優位技術",
+      "features": {
+        "agora_aec": {
+          "title": "AI強化AECアルゴリズム",
+          "description": "独自のAI強化エコーキャンセルアルゴリズムにより、様々な複雑な環境下でのエコーを効果的に除去<span class=\"citation\">[1]</span>"
+        },
+        "agora_codec": {
+          "title": "複数コーデックサポート",
+          "description": "H.264、H.265、VP8、部分的にAV1をサポートし、様々なシナリオ要件に適応<span class=\"citation\">[1]</span>"
+        },
+        "agora_image": {
+          "title": "AI画像強化",
+          "description": "ディープラーニング駆動の画像強化技術により、低光量環境での映像品質を向上<span class=\"citation\">[3]</span>"
+        },
+        "ivs_aws": {
+          "title": "AWSエコシステム統合",
+          "description": "AWSサービスとのシームレスな統合により、デプロイメントと運用プロセスを簡素化<span class=\"citation\">[4]</span>"
+        },
+        "ivs_webrtc": {
+          "title": "WebRTCベースの伝送",
+          "description": "標準WebRTCプロトコルを利用し、幅広い互換性を確保<span class=\"citation\">[2]</span>"
+        },
+        "ivs_mobile": {
+          "title": "モバイル最適化",
+          "description": "モバイルデバイス向けに最適化されたパフォーマンスで、様々なモバイルシナリオをサポート<span class=\"citation\">[4]</span>"
+        }
+      }
+    },
+    "network": {
+      "title": "ネットワーク伝送能力の比較",
+      "overview": "弱いネットワーク環境でのパフォーマンスは、リアルタイム音声・映像技術の重要な指標です。Agora SDKは独自の伝送プロトコルとAI帯域幅予測技術を使用し、弱いネットワーク環境で優れたパフォーマンスを発揮します<span class=\"citation\">[1]</span>。一方、Amazon IVSはAWSのグローバルインフラストラクチャに依存して安定した伝送を提供します<span class=\"citation\">[4]</span>。"
+    },
+    "platform": {
+      "title": "プラットフォームサポートと互換性",
+      "overview": "Agora SDKはプラットフォームサポートにおいて顕著な優位性を持ち、ほぼすべての主要プラットフォームをカバーする包括的なネイティブSDKサポートを提供しています<span class=\"citation\">[1]</span>。一方、Amazon IVSは主にモバイルとWebプラットフォームに焦点を当てています<span class=\"citation\">[4]</span>。"
+    },
+    "scenarios": {
+      "title": "実際のアプリケーションシナリオパフォーマンス",
+      "overview": "異なるアプリケーションシナリオでは、両プラットフォームにはそれぞれ特徴があります。Agoraは教育やソーシャルライブストリーミングシナリオで特に優れたパフォーマンスを発揮し<span class=\"citation\">[1]</span>、Amazon IVSはAWSエコシステムと統合されたプロジェクトで優位性を持っています<span class=\"citation\">[3]</span>。",
+      "table": {
+        "header": {
+          "scenario": "アプリケーションシナリオ",
+          "agora": "Agora SDK",
+          "ivs": "Amazon IVS"
+        },
+        "rows": {
+          "one_to_one": {
+            "scenario": "1対1の教育",
+            "agora": "⭐⭐⭐⭐⭐ 最適化された1対1体験<span class=\"citation\">[1]</span>",
+            "ivs": "⭐⭐⭐⭐ 安定した接続、低遅延<span class=\"citation\">[4]</span>"
+          },
+          "small_class": {
+            "scenario": "少人数クラス教育（1-6人）",
+            "agora": "⭐⭐⭐⭐⭐ 最適化された少人数クラス体験<span class=\"citation\">[3]</span>",
+            "ivs": "⭐⭐⭐⭐ 良好なパフォーマンス<span class=\"citation\">[2]</span>"
+          },
+          "large_class": {
+            "scenario": "大人数クラス教育（>6人）",
+            "agora": "⭐⭐⭐⭐ 特別に最適化<span class=\"citation\">[1]</span>",
+            "ivs": "⭐⭐⭐ 機能制限あり<span class=\"citation\">[4]</span>"
+          },
+          "social_live": {
+            "scenario": "ソーシャルライブストリーミング",
+            "agora": "⭐⭐⭐⭐⭐ 豊富なインタラクティブ機能<span class=\"citation\">[3]</span>",
+            "ivs": "⭐⭐⭐ 基本的なインタラクション<span class=\"citation\">[2]</span>"
+          },
+          "large_live": {
+            "scenario": "大規模ライブストリーミング",
+            "agora": "⭐⭐⭐⭐ 最適化された大規模ライブストリーミング<span class=\"citation\">[1]</span>",
+            "ivs": "⭐⭐⭐⭐⭐ AWSインフラストラクチャの優位性<span class=\"citation\">[4]</span>"
+          }
+        }
+      }
+    },
+    "demo": {
+      "title": "実際の効果デモンストレーション",
+      "overview": "以下の動画は、Agora SDKの異なるシナリオでの実際のアプリケーション効果を示しています。弱いネットワーク環境でのパフォーマンス、美顔効果、インタラクティブホワイトボード機能を含みます<span class=\"citation\">[1]</span>。",
+      "placeholder": "[動画デモ位置] - Agora SDK実際の効果デモンストレーション動画をここに挿入できます"
+    },
+    "device_coverage": {
+      "title": "デバイスサポート",
+      "overview": "デバイスサポートは、リアルタイム音声・映像SDKを評価する重要な指標です。Agora SDKとAmazon IVSの異なるデバイスでのサポート状況は、ユーザー体験と市場カバレッジに直接影響を与えます<span class=\"citation\">[3]</span>。",
+      "ios": {
+        "title": "iOSデバイスサポート",
+        "description": "Agora SDKとAmazon IVSのiOSデバイスでのサポート状況は以下の通りです。Agora SDKはより広範なiOSデバイスモデルとシステムバージョンをサポートしています<span class=\"citation\">[1]</span>。",
+        "version": "iOSバージョンサポート",
+        "compatibility": "デバイス互換性",
+        "agora_version": "iOS 9.0以降のすべてのバージョンをサポート、最新のiOS 17を含む<span class=\"citation\">[1]</span>",
+        "agora_compatibility": "iPhone 5s以降のすべてのモデル、iPad Air以降のすべてのモデルをサポート<span class=\"citation\">[3]</span>",
+        "ivs_version": "iOS 11.0以降をサポート<span class=\"citation\">[4]</span>",
+        "ivs_compatibility": "iPhone 6s以降のモデル、一部のiPad Proと新型iPadをサポート<span class=\"citation\">[2]</span>"
+      },
+      "android": {
+        "title": "Androidデバイスサポート",
+        "description": "Androidデバイスサポートの面でも、Agora SDKはより広範な互換性を示しています<span class=\"citation\">[1]</span>。",
+        "version": "Androidバージョンサポート",
+        "coverage": "デバイスカバレッジ",
+        "agora_version": "Android 4.4以降のすべてのバージョンをサポート、最新のAndroid 14を含む<span class=\"citation\">[1]</span>",
+        "agora_coverage": "サムスン、ファーウェイ、シャオミなどの主要ブランドを含む10,000以上のAndroidデバイスをサポート<span class=\"citation\">[3]</span>",
+        "ivs_version": "Android 5.0以降をサポート<span class=\"citation\">[4]</span>",
+        "ivs_coverage": "主に中高級Androidデバイスをサポート、一部の低価格デバイスのサポートは制限あり<span class=\"citation\">[2]</span>"
+      }
+    },
+    "conclusion": {
+      "title": "選択推奨",
+      "overview": "上記の比較分析に基づいて、以下の選択推奨を導き出すことができます<span class=\"citation\">[1][3]</span>：",
+      "agora_title": "Agora SDKを選択する理想的なシナリオ：",
+      "agora_scenarios": [
+        "豊富なインタラクティブ機能を必要とするソーシャルアプリケーション<span class=\"citation\">[1]</span>",
+        "教育シナリオ、特にホワイトボードコラボレーションを必要とするもの<span class=\"citation\">[3]</span>",
+        "音声・映像の品質と効果に高い要件を持つアプリケーション<span class=\"citation\">[1]</span>",
+        "複数のプラットフォームでネイティブ体験サポートを必要とするアプリケーション<span class=\"citation\">[3]</span>",
+        "弱いネットワーク環境でのアプリケーションシナリオ<span class=\"citation\">[1]</span>"
+      ],
+      "ivs_title": "Amazon IVSを選択する理想的なシナリオ：",
+      "ivs_scenarios": [
+        "すでにAWSサービスを深く使用しているプロジェクト<span class=\"citation\">[4]</span>",
+        "基本的なリアルタイムインタラクティブ機能の迅速なデプロイメントを必要とするプロジェクト<span class=\"citation\">[2]</span>",
+        "大規模ライブストリーミングを主とし、インタラクションを補助とするアプリケーション<span class=\"citation\">[4]</span>",
+        "コスト重視で、使用量に応じた支払いを希望するプロジェクト<span class=\"citation\">[2]</span>"
+      ]
+    }
+  },
+  "footer": {
+    "data_source": "データソース：公開技術文書、公式仕様、およびサードパーティ評価",
+    "last_update": "最終更新：2025年3月"
+  },
+  "charts": {
+    "architecture": {
+      "title": "アーキテクチャ特性スコア比較（満点10点）",
+      "labels": ["モジュール性", "拡張性設計", "コア設計理念", "クロスプラットフォーム一貫性"],
+      "agora_label": "Agora SDK",
+      "ivs_label": "Amazon IVS"
+    },
+    "network": {
+      "title": "異なるネットワーク環境での映像品質パフォーマンス",
+      "labels": ["優れたネットワーク", "良好なネットワーク", "平均的なネットワーク", "貧弱なネットワーク", "非常に貧弱なネットワーク"],
+      "y_axis": "映像品質保持率（%）",
+      "x_axis": "ネットワーク環境",
+      "agora_label": "Agora SDK - 映像品質保持率",
+      "ivs_label": "Amazon IVS - 映像品質保持率"
+    },
+    "scenarios": {
+      "title": "異なるアプリケーションシナリオでのパフォーマンススコア（満点5星）",
+      "labels": ["1対1教育", "少人数クラス教育", "大人数クラス教育", "ソーシャルライブストリーミング", "大規模ライブストリーミング", "ホワイトボードコラボレーション", "インタラクティブツール"],
+      "agora_label": "Agora SDK",
+      "ivs_label": "Amazon IVS"
+    },
+    "platform": {
+      "title": "プラットフォームサポート比較",
+      "agora_platforms": "Agoraがサポートするプラットフォーム",
+      "ivs_platforms": "IVSがサポートするプラットフォーム",
+      "agora_exclusive": "Agoraが独占的にサポート"
+    },
+    "radar": {
+      "title": "音声・映像技術能力比較",
+      "agora_label": "Agora SDK",
+      "ivs_label": "Amazon IVS"
+    }
+  },
+  "language_selector": {
+    "label": "言語を選択",
+    "languages": {
+      "zh": "中文",
+      "en": "English",
+      "ja": "日本語",
+      "ko": "한국어"
+    }
+  }
+}

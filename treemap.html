@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设备使用时长树状图</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        #chart {
+            width: 80%; /* 降低20% */
+            height: 560px;
+            margin: 0 auto; /* 居中显示 */
+        }
+        .node {
+            stroke: #fff;
+            stroke-width: 1px;
+        }
+        .label {
+            font-size: 11px;
+            fill: white;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">设备使用时长树状图</h1>
+    <div id="chart"></div>
+
+    <script>
+        // 加载CSV数据
+        d3.csv("data/android_usage.csv")
+            .then(function(csvData) {
+                // 处理CSV数据
+                const processedData = processCSVData(csvData);
+                // 创建树状图
+                createTreemap(processedData);
+            })
+            .catch(function(error) {
+                console.error("加载CSV文件出错:", error);
+                document.getElementById('chart').innerHTML = "加载数据失败，请检查CSV文件路径是否正确。错误信息: " + error;
+            });
+
+        // 处理CSV数据，每个品牌取前50个设备
+        function processCSVData(csvData) {
+            // 按厂商分组
+            const vendorGroups = {};
+            
+            csvData.forEach(item => {
+                const vendor = item.device_vendor;
+                const device = item.device_type;
+                const duration = parseFloat(item["[HostAndAudience]AudioAndVideoDurationMinutes"]);
+                
+                if (!isNaN(duration)) {
+                    if (!vendorGroups[vendor]) {
+                        vendorGroups[vendor] = [];
+                    }
+                    
+                    // 检查是否已存在相同设备
+                    const existingDevice = vendorGroups[vendor].find(d => d.device === device);
+                    if (existingDevice) {
+                        // 如果存在相同设备，取最大使用时长
+                        existingDevice.duration = Math.max(existingDevice.duration, duration);
+                    } else {
+                        // 否则添加新设备
+                        vendorGroups[vendor].push({
+                            vendor: vendor,
+                            device: device,
+                            duration: duration
+                        });
+                    }
+                }
+            });
+            
+            // 对每个厂商的设备按使用时长排序，并取前50个
+            const result = [];
+            for (const vendor in vendorGroups) {
+                // 按使用时长降序排序
+                vendorGroups[vendor].sort((a, b) => b.duration - a.duration);
+                
+                // 取前50个设备
+                const top50Devices = vendorGroups[vendor].slice(0, 50);
+                
+                // 添加到结果数组
+                result.push(...top50Devices);
+            }
+            
+            return result;
+        }
+
+        // 处理数据，创建层次结构
+        function processData(data) {
+            // 创建一个根节点
+            const root = {
+                name: "设备",
+                children: []
+            };
+
+            // 按厂商分组
+            const vendorGroups = {};
+            
+            // 计算Samsung的总使用时长
+            let samsungTotalDuration = 0;
+            data.forEach(item => {
+                if (item.vendor.toLowerCase() === 'samsung') {
+                    samsungTotalDuration += item.duration;
+                }
+            });
+            
+            data.forEach(item => {
+                if (!vendorGroups[item.vendor]) {
+                    vendorGroups[item.vendor] = {
+                        name: item.vendor,
+                        children: []
+                    };
+                    root.children.push(vendorGroups[item.vendor]);
+                }
+
+                // 添加设备节点
+                let duration = item.duration;
+                // 如果是Samsung品牌，缩小其使用时长值（影响矩形大小）
+                if (item.vendor.toLowerCase() === 'samsung') {
+                    duration = duration * 0.8; // 缩小20%
+                }
+                
+                vendorGroups[item.vendor].children.push({
+                    name: item.device,
+                    value: duration,
+                    device: item.device,
+                    originalDuration: item.duration // 保存原始时长用于提示显示
+                });
+            });
+
+            return root;
+        }
+
+        // 创建树状图
+        function createTreemap(data) {
+            const width = document.getElementById('chart').clientWidth * 1.1;
+            const height = document.getElementById('chart').clientHeight;
+
+            // 处理数据
+            const hierarchyData = d3.hierarchy(processData(data))
+                .sum(d => d.value)
+                .sort((a, b) => b.value - a.value);
+
+            // 创建树状图布局
+            const treemap = d3.treemap()
+                .size([width, height])
+                .paddingOuter(3)
+                .paddingTop(19)
+                .paddingInner(1)
+                .round(true);
+
+            // 生成树状图数据
+            const root = treemap(hierarchyData);
+
+            // 创建SVG
+            const svg = d3.select("#chart")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .style("margin-left", "-5%"); // 添加负边距使增加的宽度居中显示
+
+            // 定义颜色比例尺 - 扩展颜色范围以支持更多厂商
+            const colorScale = d3.scaleOrdinal()
+                .domain(Array.from(new Set(data.map(d => d.vendor))))
+                .range(d3.schemeCategory10);
+
+            // 创建节点
+            const node = svg.selectAll("g")
+                .data(root.descendants())
+                .enter()
+                .append("g")
+                .attr("transform", d => `translate(${d.x0},${d.y0})`);
+
+            // 添加矩形
+            node.append("rect")
+                .attr("class", "node")
+                .attr("id", d => `rect-${d.data.name}`)
+                .attr("width", d => d.x1 - d.x0)
+                .attr("height", d => d.y1 - d.y0)
+                .attr("fill", d => {
+                    if (d.depth === 1) return colorScale(d.data.name);
+                    if (d.depth === 2) return d3.color(colorScale(d.parent.data.name)).brighter(0.5);
+                    return "#ddd";
+                })
+                .attr("opacity", d => 1 - d.depth * 0.1);
+
+            // 添加标题
+            node.append("text")
+                .attr("class", "label")
+                .attr("x", d => (d.x1 - d.x0) / 2)
+                .attr("y", d => d.depth === 1 ? 12 : (d.y1 - d.y0) / 2)
+                .attr("dy", ".35em")
+                .text(d => {
+                    if (d.depth === 0) return "";
+                    if (d.depth === 1) return d.data.name;
+                    return ""; // 设备名称将通过下面的代码处理
+                })
+                .style("font-size", d => {
+                    if (d.depth === 1) return "14px";
+                    if (d.depth === 2) return "12px";
+                    return "10px";
+                })
+                .style("fill", "white");
+                
+            // 为设备节点添加自动换行文本
+            node.filter(d => d.depth === 2)
+                .each(function(d) {
+                    const width = d.x1 - d.x0;
+                    const height = d.y1 - d.y0;
+                    
+                    // 如果矩形太小，不显示文本
+                    if (width < 30 || height < 20) return;
+                    
+                    const deviceName = d.data.name;
+                    const rectWidth = width - 10; // 留出边距
+                    
+                    // 估算每行可容纳的字符数（根据字体大小调整）
+                    const fontSize = 12;
+                    const avgCharWidth = fontSize * 0.6; // 估算每个字符的平均宽度
+                    const charsPerLine = Math.max(1, Math.floor(rectWidth / avgCharWidth));
+                    
+                    // 文本分行
+                    let lines = [];
+                    if (deviceName.length <= charsPerLine) {
+                        lines = [deviceName];
+                    } else {
+                        // 分行处理
+                        for (let i = 0; i < deviceName.length; i += charsPerLine) {
+                            const line = deviceName.substr(i, charsPerLine);
+                            lines.push(line);
+                            // 最多显示3行
+                            if (lines.length >= 3) {
+                                // 如果还有更多文本，在最后一行添加省略号
+                                if (i + charsPerLine < deviceName.length) {
+                                    lines[lines.length - 1] = lines[lines.length - 1].slice(0, -2) + "..";
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // 计算文本垂直位置
+                    const lineHeight = fontSize + 2; // 行高
+                    const totalTextHeight = lines.length * lineHeight;
+                    let startY = (height - totalTextHeight) / 2 + fontSize / 2;
+                    
+                    // 创建文本元素
+                    const textGroup = d3.select(this).append("text")
+                        .attr("class", "label")
+                        .attr("text-anchor", "middle")
+                        .attr("fill", "white")
+                        .style("font-size", fontSize + "px")
+                        .style("pointer-events", "none");
+                    
+                    // 添加每一行
+                    lines.forEach((line, i) => {
+                        textGroup.append("tspan")
+                            .attr("x", width / 2)
+                            .attr("y", startY + i * lineHeight)
+                            .text(line);
+                    });
+                });
+
+            // 添加设备信息提示
+            node.append("title")
+                .text(d => {
+                    if (d.depth === 0) return "所有设备";
+                    if (d.depth === 1) return `厂商: ${d.data.name}\n总使用时长: ${Math.round(d.value)}分钟`;
+                    if (d.depth === 2) {
+                        // 使用原始时长显示提示信息
+                        const originalDuration = d.data.originalDuration || d.value;
+                        return `设备: ${d.data.name}\n使用时长: ${Math.round(originalDuration)}分钟`;
+                    }
+                    return "";
+                });
+        }
+    </script>
+</body>
+</html>

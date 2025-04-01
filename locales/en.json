@@ -1,0 +1,194 @@
+{
+  "page_title": "Agora SDK vs Amazon IVS - In-depth Feature Comparison",
+  "header": {
+    "title": "Agora SDK vs Amazon IVS",
+    "subtitle": "In-depth Analysis of Real-time Audio and Video Technology"
+  },
+  "sections": {
+    "architecture": {
+      "title": "Core Technology Architecture Comparison",
+      "overview": "Agora SDK adopts a unified SDK architecture, providing a single SDK that integrates all functions, while Amazon IVS adopts a separated architecture, separating the broadcast SDK from the player<span class=\"citation\">[1]</span>. This architectural difference directly affects the development experience and functional scalability<span class=\"citation\">[4]</span>."
+    },
+    "audio_video": {
+      "title": "Audio and Video Technology Capability Comparison",
+      "overview": "Agora has significant advantages in audio and video processing technology, especially in codec support, audio enhancement, and video effects<span class=\"citation\">[1]</span>. The following chart shows the comparison of the two platforms on key audio and video technical indicators<span class=\"citation\">[3]</span>:",
+      "agora_advantages": "Agora SDK Advantage Technologies",
+      "ivs_advantages": "Amazon IVS Advantage Technologies",
+      "features": {
+        "agora_aec": {
+          "title": "AI-enhanced AEC Algorithm",
+          "description": "Proprietary AI-enhanced echo cancellation algorithm, effectively eliminating echo in various complex environments<span class=\"citation\">[1]</span>"
+        },
+        "agora_codec": {
+          "title": "Multiple Codec Support",
+          "description": "Support for H.264, H.265, VP8, partial support for AV1, adapting to different scenario requirements<span class=\"citation\">[1]</span>"
+        },
+        "agora_image": {
+          "title": "AI Image Enhancement",
+          "description": "Deep learning-driven image enhancement technology, improving video quality in low-light environments<span class=\"citation\">[3]</span>"
+        },
+        "ivs_aws": {
+          "title": "AWS Ecosystem Integration",
+          "description": "Seamless integration with AWS services, simplifying deployment and operation processes<span class=\"citation\">[4]</span>"
+        },
+        "ivs_webrtc": {
+          "title": "WebRTC-based Transmission",
+          "description": "Utilizing standard WebRTC protocol, ensuring wide compatibility<span class=\"citation\">[2]</span>"
+        },
+        "ivs_mobile": {
+          "title": "Mobile Optimization",
+          "description": "Performance optimized for mobile devices, supporting various mobile scenarios<span class=\"citation\">[4]</span>"
+        }
+      }
+    },
+    "network": {
+      "title": "Network Transmission Capability Comparison",
+      "overview": "Performance in weak network environments is a key indicator of real-time audio and video technology. Agora SDK uses proprietary transmission protocols and AI bandwidth prediction technology, performing excellently in weak network environments<span class=\"citation\">[1]</span>. In comparison, Amazon IVS relies on AWS's global infrastructure to provide stable transmission<span class=\"citation\">[4]</span>."
+    },
+    "platform": {
+      "title": "Platform Support and Compatibility",
+      "overview": "Agora SDK has significant advantages in platform support, providing comprehensive native SDK support, covering almost all mainstream platforms<span class=\"citation\">[1]</span>. Amazon IVS, on the other hand, mainly focuses on mobile and web platforms<span class=\"citation\">[4]</span>."
+    },
+    "scenarios": {
+      "title": "Actual Application Scenario Performance",
+      "overview": "In different application scenarios, the two platforms have their own characteristics. Agora performs particularly well in education and social live streaming scenarios<span class=\"citation\">[1]</span>, while Amazon IVS has advantages in projects integrated with the AWS ecosystem<span class=\"citation\">[3]</span>.",
+      "table": {
+        "header": {
+          "scenario": "Application Scenario",
+          "agora": "Agora SDK",
+          "ivs": "Amazon IVS"
+        },
+        "rows": {
+          "one_to_one": {
+            "scenario": "1-on-1 Teaching",
+            "agora": "⭐⭐⭐⭐⭐ Optimized 1-on-1 experience<span class=\"citation\">[1]</span>",
+            "ivs": "⭐⭐⭐⭐ Stable connection, low latency<span class=\"citation\">[4]</span>"
+          },
+          "small_class": {
+            "scenario": "Small Class Teaching (1-6 people)",
+            "agora": "⭐⭐⭐⭐⭐ Optimized small class experience<span class=\"citation\">[3]</span>",
+            "ivs": "⭐⭐⭐⭐ Good performance<span class=\"citation\">[2]</span>"
+          },
+          "large_class": {
+            "scenario": "Large Class Teaching (>6 people)",
+            "agora": "⭐⭐⭐⭐ Specially optimized<span class=\"citation\">[1]</span>",
+            "ivs": "⭐⭐⭐ Limited functionality<span class=\"citation\">[4]</span>"
+          },
+          "social_live": {
+            "scenario": "Social Live Streaming",
+            "agora": "⭐⭐⭐⭐⭐ Rich interactive features<span class=\"citation\">[3]</span>",
+            "ivs": "⭐⭐⭐ Basic interaction<span class=\"citation\">[2]</span>"
+          },
+          "large_live": {
+            "scenario": "Large-scale Live Streaming",
+            "agora": "⭐⭐⭐⭐ Optimized large-scale live streaming<span class=\"citation\">[1]</span>",
+            "ivs": "⭐⭐⭐⭐⭐ AWS infrastructure advantage<span class=\"citation\">[4]</span>"
+          }
+        }
+      }
+    },
+    "demo": {
+      "title": "Actual Effect Demonstration",
+      "overview": "The following video demonstrates the actual application effects of Agora SDK in different scenarios, including performance in weak network environments, beauty effects, and interactive whiteboard functionality<span class=\"citation\">[1]</span>.",
+      "placeholder": "[Video Demo Position] - Agora SDK actual effect demonstration video can be inserted here"
+    },
+    "device_coverage": {
+        "title": "Device Coverage",
+        "overview": "Device coverage is an important metric for evaluating real-time audio and video SDKs. The support of Agora SDK and Amazon IVS on different devices directly affects user experience and market coverage<span class=\"citation\">[3]</span>.",
+        "ios": {
+          "title": "iOS Device Support",
+          "description": "The support of Agora SDK and Amazon IVS on iOS devices is shown below. Agora SDK supports a wider range of iOS device models and system versions<span class=\"citation\">[1]</span>.",
+          "version": "iOS Version Support",
+          "compatibility": "Device Compatibility",
+          "agora_version": "Supports all versions of iOS 9.0 and above, including the latest iOS 17<span class=\"citation\">[1]</span>",
+          "agora_compatibility": "Supports all iPhone 5s and above models, iPad Air and above models<span class=\"citation\">[3]</span>",
+          "ivs_version": "Supports iOS 11.0 and above<span class=\"citation\">[4]</span>",
+          "ivs_compatibility": "Supports iPhone 6s and above models, some iPad Pro and newer iPad models<span class=\"citation\">[2]</span>"
+        },
+        "android": {
+          "title": "Android Device Support",
+          "description": "In terms of Android device support, Agora SDK also demonstrates broader compatibility<span class=\"citation\">[1]</span>.",
+          "version": "Android Version Support",
+          "coverage": "Device Coverage",
+          "agora_version": "Supports all versions of Android 4.4 and above, including the latest Android 14<span class=\"citation\">[1]</span>",
+          "agora_coverage": "Supports over 10,000 Android devices, including major brands such as Samsung, Huawei, Xiaomi, etc.<span class=\"citation\">[3]</span>",
+          "ivs_version": "Supports Android 5.0 and above<span class=\"citation\">[4]</span>",
+          "ivs_coverage": "Mainly supports mid to high-end Android devices, with limited support for some low-end devices<span class=\"citation\">[2]</span>"
+        }
+      },
+    "conclusion": {
+      "title": "Selection Recommendations",
+      "overview": "Based on the above comparative analysis, we can draw the following selection recommendations<span class=\"citation\">[1][3]</span>:",
+      "agora_title": "Ideal scenarios for choosing Agora SDK:",
+      "agora_scenarios": [
+        "Social applications requiring rich interactive features<span class=\"citation\">[1]</span>",
+        "Educational scenarios, especially those requiring whiteboard collaboration<span class=\"citation\">[3]</span>",
+        "Applications with high requirements for audio and video quality and effects<span class=\"citation\">[1]</span>",
+        "Applications requiring native experience support for multiple platforms<span class=\"citation\">[3]</span>",
+        "Application scenarios in weak network environments<span class=\"citation\">[1]</span>"
+      ],
+      "ivs_title": "Ideal scenarios for choosing Amazon IVS:",
+      "ivs_scenarios": [
+        "Projects already deeply using AWS services<span class=\"citation\">[4]</span>",
+        "Projects requiring quick deployment of basic real-time interactive features<span class=\"citation\">[2]</span>",
+        "Applications primarily for large-scale live streaming, with interaction as a supplement<span class=\"citation\">[4]</span>",
+        "Cost-sensitive projects hoping to pay according to usage<span class=\"citation\">[2]</span>"
+      ]
+    }
+  },
+  "footer": {
+    "data_source": "Data Source: Public technical documentation, official specifications, and third-party evaluations",
+    "last_update": "Last Updated: March 2025"
+  },
+  "charts": {
+    "architecture": {
+      "title": "Architecture Feature Score Comparison (Full score 10 points)",
+      "labels": ["Modularity", "Extensibility Design", "Core Design Philosophy", "Cross-platform Consistency"],
+      "agora_label": "Agora SDK",
+      "ivs_label": "Amazon IVS"
+    },
+    "network": {
+      "title": "Video Quality Performance in Different Network Environments",
+      "labels": ["Excellent Network", "Good Network", "Average Network", "Poor Network", "Very Poor Network"],
+      "y_axis": "Video Quality Retention Rate (%)",
+      "x_axis": "Network Environment",
+      "agora_label": "Agora SDK - Video Quality Retention Rate",
+      "ivs_label": "Amazon IVS - Video Quality Retention Rate"
+    },
+    "scenarios": {
+      "title": "Performance Scores in Different Application Scenarios (Full score 5 stars)",
+      "labels": ["1-on-1 Teaching", "Small Class Teaching", "Large Class Teaching", "Social Live Streaming", "Large-scale Live Streaming", "Whiteboard Collaboration", "Interactive Tools"],
+      "agora_label": "Agora SDK",
+      "ivs_label": "Amazon IVS"
+    },
+    "platform": {
+      "title": "Platform Support Comparison",
+      "agora_platforms": "Platforms Supported by Agora",
+      "ivs_platforms": "Platforms Supported by IVS",
+      "agora_exclusive": "Exclusively Supported by Agora"
+    },
+    "radar": {
+      "title": "Audio and Video Technology Capability Comparison",
+      "agora_label": "Agora SDK",
+      "ivs_label": "Amazon IVS",
+      "indicators": [
+        "Audio Quality",
+        "Video Quality",
+        "Codec Support",
+        "Latency Performance",
+        "Weak Network Performance",
+        "Effects Capability",
+        "Development Convenience"
+      ]
+    }
+  },
+  "language_selector": {
+    "label": "Select Language",
+    "languages": {
+      "zh": "中文",
+      "en": "English",
+      "ja": "日本語",
+      "ko": "한국어"
+    }
+  }
+}
