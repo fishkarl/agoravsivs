@@ -443,7 +443,7 @@ function initNetworkChart() {
         },
         {
           label: 'Amazon IVS - 视频质量保持率',
-          data: [100, 80, 65, 10, 5],
+          data: [100, 80, 50, 10, 5],
           borderColor: 'rgba(255, 153, 0, 1)',
           backgroundColor: 'rgba(255, 153, 0, 0.1)',
           tension: 0.4,
