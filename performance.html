@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVS vs Agora Network Performance Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    .chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .chart-box {
+      width: 48%;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .summary {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .section-divider {
+      border-top: 2px solid #eaeaea;
+      margin: 40px 0;
+      padding-top: 20px;
+    }
+    .section-header {
+      background-color: #e9f7fe;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>IVS vs Agora Network Performance Comparison</h1>
+  
+  <div class="summary">
+    <h2>Overview</h2>
+    <p>This analysis compares the performance of IVS and Agora (RTC) under various network conditions, focusing on the impact of packet loss on video quality metrics including framerate, pause rate, and latency.</p>
+  </div>
+  
+  <div class="section-header">
+    <h2>Uplink Packet Loss Performance</h2>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-box">
+      <canvas id="uplinkFramerateChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <canvas id="uplinkPauseRateChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-box">
+      <canvas id="uplinkLatencyChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="summary">
+    <h3>Uplink Packet Loss Performance Analysis</h3>
+    <p>Significant differences exist between IVS and Agora(RTC) in response to uplink packet loss:</p>
+    <ul>
+      <li><strong>Framerate Impact</strong>: As uplink packet loss increases, IVS framerate drops dramatically, from 17.22fps at 5% loss to only 0.28fps at 50% loss. In contrast, Agora maintains a stable framerate around 27fps even at 50% packet loss.</li>
+      <li><strong>Pause Rate Impact</strong>: IVS shows extremely high pause rates in uplink packet loss environments, reaching 45.2% PAUSE_RATE_200MS at just 5% loss, and 99.23% at 50% loss. Agora maintains very low pause rates even in high packet loss environments, with a maximum of only 0.59%.</li>
+      <li><strong>Latency Impact</strong>: IVS shows significant latency variability under packet loss conditions, with standard deviation values increasing dramatically as packet loss increases. Agora maintains more consistent latency even under adverse network conditions.</li>
+      <li><strong>Bandwidth Limitation</strong>: When uplink bandwidth is limited to 1000kbps with 10% packet loss, both IVS and Agora are affected, but Agora's framerate drops more significantly (to 9.42fps), indicating that Agora's advantage diminishes in low-bandwidth high-loss environments.</li>
+    </ul>
+  </div>
+
+  <h3>Uplink Packet Loss Detailed Data</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Packet Loss (%)</th>
+        <th>IVS Framerate</th>
+        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS Latency Median/SD (ms)</th>
+        <th>Agora Framerate</th>
+        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora Latency Median/SD (ms)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>17.22</td>
+        <td>45.20</td>
+        <td>443/823</td>
+        <td>27.06</td>
+        <td>0.00</td>
+        <td>348/15</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>9.87</td>
+        <td>70.36</td>
+        <td>334/768</td>
+        <td>27.06</td>
+        <td>0.00</td>
+        <td>308/167</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>2.70</td>
+        <td>93.76</td>
+        <td>3077/3843</td>
+        <td>27.12</td>
+        <td>0.18</td>
+        <td>343/28</td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td>1.10</td>
+        <td>97.14</td>
+        <td>2509/3988</td>
+        <td>27.29</td>
+        <td>0.59</td>
+        <td>333/15</td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td>0.28</td>
+        <td>99.23</td>
+        <td>2417/2880</td>
+        <td>27.08</td>
+        <td>0.09</td>
+        <td>374/24</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="section-divider"></div>
+  
+  <div class="section-header">
+    <h2>Downlink Packet Loss Performance</h2>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-box">
+      <canvas id="downlinkFramerateChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <canvas id="downlinkPauseRateChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-box">
+      <canvas id="downlinkLatencyChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="summary">
+    <h3>Downlink Packet Loss Performance Analysis</h3>
+    <p>There are also notable differences between IVS and Agora(RTC) in response to downlink packet loss:</p>
+    <ul>
+      <li><strong>Framerate Impact</strong>: As downlink packet loss increases, IVS framerate shows a gradual decline from 15.66fps at 5% loss to 13.1fps at 50% loss. Agora maintains a consistent framerate of approximately 30fps across all packet loss rates.</li>
+      <li><strong>Pause Rate Impact</strong>: IVS pause rates increase significantly with higher downlink packet loss, reaching 47.6% PAUSE_RATE_200MS at 50% loss. Agora maintains extremely low pause rates across all downlink packet loss conditions, with a maximum of only 0.11%.</li>
+      <li><strong>Latency Impact</strong>: IVS shows increasing latency as downlink packet loss increases, while Agora maintains more consistent latency values even under adverse network conditions.</li>
+      <li><strong>Bandwidth Limitation</strong>: When downlink bandwidth is limited to 1000kbps with 10% packet loss, IVS maintains 15.24fps while Agora drops to 12.58fps, indicating that the performance gap narrows in low-bandwidth high-loss environments.</li>
+    </ul>
+  </div>
+
+  <h3>Downlink Packet Loss Detailed Data</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Packet Loss (%)</th>
+        <th>IVS Framerate</th>
+        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS Latency Median/SD (ms)</th>
+        <th>Agora Framerate</th>
+        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora Latency Median/SD (ms)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>15.66</td>
+        <td>0.19</td>
+        <td>268/14</td>
+        <td>29.22</td>
+        <td>0.11</td>
+        <td>348/12</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>15.45</td>
+        <td>1.30</td>
+        <td>271/16</td>
+        <td>30.00</td>
+        <td>0.00</td>
+        <td>352/14</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>25.79</td>
+        <td>5.92</td>
+        <td>284/25</td>
+        <td>29.98</td>
+        <td>0.00</td>
+        <td>361/19</td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td>22.51</td>
+        <td>14.15</td>
+        <td>325/42</td>
+        <td>30.00</td>
+        <td>0.08</td>
+        <td>372/28</td>
+      </tr>
+      <tr>
+        <td>50</td>
+        <td>13.10</td>
+        <td>47.60</td>
+        <td>659/176</td>
+        <td>29.98</td>
+        <td>0.00</td>
+        <td>398/47</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="section-divider"></div>
+  
+  <div class="section-header">
+    <h2>Network Jitter Performance</h2>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-box">
+      <canvas id="jitterFramerateChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <canvas id="jitterPauseRateChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-container">
+    <div class="chart-box">
+      <canvas id="jitterLatencyChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="summary">
+    <h3>Network Jitter Performance Analysis</h3>
+    <p>Network jitter also has different impacts on IVS and Agora performance:</p>
+    <ul>
+      <li><strong>Framerate Impact</strong>: As jitter increases, IVS framerate gradually decreases, from 16.95fps at 100ms jitter to 6.34fps at 600ms jitter. Agora maintains a more stable framerate, only dropping slightly from 27.35fps to 26.29fps across the same jitter range.</li>
+      <li><strong>Pause Rate Impact</strong>: IVS pause rates increase significantly with higher jitter, reaching 40.77% PAUSE_RATE_200MS at 600ms jitter. Agora maintains very low pause rates even with high jitter, with a maximum of only 0.24%.</li>
+      <li><strong>Latency Impact</strong>: With increasing jitter, both solutions show increased latency, but Agora maintains more consistent latency values with lower standard deviations compared to IVS.</li>
+    </ul>
+  </div>
+
+  <h3>Network Jitter Detailed Data (Uplink)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Jitter (ms)</th>
+        <th>IVS Framerate</th>
+        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS Latency Median/SD (ms)</th>
+        <th>Agora Framerate</th>
+        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora Latency Median/SD (ms)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>100</td>
+        <td>16.95</td>
+        <td>1.95</td>
+        <td>418/121</td>
+        <td>27.35</td>
+        <td>0.00</td>
+        <td>432/41</td>
+      </tr>
+      <tr>
+        <td>300</td>
+        <td>8.37</td>
+        <td>25.39</td>
+        <td>551/766</td>
+        <td>26.70</td>
+        <td>0.24</td>
+        <td>501/117</td>
+      </tr>
+      <tr>
+        <td>600</td>
+        <td>6.34</td>
+        <td>40.77</td>
+        <td>687/845</td>
+        <td>26.29</td>
+        <td>0.08</td>
+        <td>769/100</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Network Jitter Detailed Data (Downlink)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Jitter (ms)</th>
+        <th>IVS Framerate</th>
+        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS Latency Median/SD (ms)</th>
+        <th>Agora Framerate</th>
+        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora Latency Median/SD (ms)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>100</td>
+        <td>15.31</td>
+        <td>0.00</td>
+        <td>538/22</td>
+        <td>29.98</td>
+        <td>0.00</td>
+        <td>412/18</td>
+      </tr>
+      <tr>
+        <td>300</td>
+        <td>14.89</td>
+        <td>1.42</td>
+        <td>643/55</td>
+        <td>29.79</td>
+        <td>0.26</td>
+        <td>590/54</td>
+      </tr>
+      <tr>
+        <td>600</td>
+        <td>12.31</td>
+        <td>14.88</td>
+        <td>657/75</td>
+        <td>29.51</td>
+        <td>0.10</td>
+        <td>683/62</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-divider"></div>
+
+  <div class="summary">
+    <h2>Overall Conclusions</h2>
+    <p>Based on the analysis of test data, we can draw the following conclusions:</p>
+    <ul>
+      <li><strong>Uplink Packet Loss Adaptability</strong>: Agora performs excellently in uplink packet loss environments, maintaining stable framerate and extremely low pause rates even at high packet loss rates (50%). IVS performance degrades dramatically with uplink packet loss, with user experience significantly affected at packet loss rates above 10%.</li>
+      <li><strong>Downlink Packet Loss Adaptability</strong>: Agora also performs excellently in downlink packet loss environments, maintaining stable high framerates and low pause rates across all packet loss rates. IVS performs better with downlink packet loss than uplink, but still shows noticeable performance degradation as packet loss increases.</li>
+      <li><strong>Jitter Adaptability</strong>: Agora demonstrates superior resilience to network jitter in both uplink and downlink scenarios, maintaining stable framerates and low pause rates even at high jitter values (600ms). IVS shows progressive degradation as jitter increases.</li>
+      <li><strong>Latency Performance</strong>: Agora generally maintains more consistent latency values with lower standard deviations compared to IVS, particularly in high packet loss scenarios. This suggests more stable and predictable video delivery.</li>
+      <li><strong>Bandwidth Limitation Impact</strong>: In low-bandwidth high-packet-loss environments, the performance gap between the two solutions narrows, but overall Agora still demonstrates better network adaptability.</li>
+      <li><strong>Overall Assessment</strong>: From a network adaptability perspective, Agora demonstrates better stability and resistance to interference across various network conditions, with particularly notable advantages in poor uplink network quality scenarios.</li>
+    </ul>
+  </div>
+
+  <script>
+    // Uplink packet loss framerate comparison chart
+    const uplinkFramerateCtx = document.getElementById('uplinkFramerateChart').getContext('2d');
+    const uplinkFramerateChart = new Chart(uplinkFramerateCtx, {
+      type: 'line',
+      data: {
+        labels: ['5%', '10%', '20%', '30%', '50%'],
+        datasets: [
+          {
+            label: 'IVS Framerate',
+            data: [17.22, 9.87, 2.7, 1.1, 0.28],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'Agora Framerate',
+            data: [27.06, 27.06, 27.12, 27.29, 27.08],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Uplink Packet Loss on Framerate',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Framerate (fps)'
+            },
+            max: 35
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Packet Loss Rate'
+            }
+          }
+        }
+      }
+    });
+
+    // Uplink packet loss pause rate comparison chart
+    const uplinkPauseRateCtx = document.getElementById('uplinkPauseRateChart').getContext('2d');
+    const uplinkPauseRateChart = new Chart(uplinkPauseRateCtx, {
+      type: 'line',
+      data: {
+        labels: ['5%', '10%', '20%', '30%', '50%'],
+        datasets: [
+          {
+            label: 'IVS Pause Rate (200ms)',
+            data: [45.2, 70.36, 93.76, 97.14, 99.23],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'Agora Pause Rate (200ms)',
+            data: [0, 0, 0.18, 0.59, 0.09],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Uplink Packet Loss on Pause Rate',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Pause Rate (%)'
+            },
+            max: 100
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Packet Loss Rate'
+            }
+          }
+        }
+      }
+    });
+    
+    // Uplink packet loss latency comparison chart
+    const uplinkLatencyCtx = document.getElementById('uplinkLatencyChart').getContext('2d');
+    const uplinkLatencyChart = new Chart(uplinkLatencyCtx, {
+      type: 'bar',
+      data: {
+        labels: ['5%', '10%', '20%', '30%', '50%'],
+        datasets: [
+          {
+            label: 'IVS Latency Median (ms)',
+            data: [443, 334, 3077, 2509, 2417],
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'IVS Latency SD (ms)',
+            data: [823, 768, 3843, 3988, 2880],
+            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Agora Latency Median (ms)',
+            data: [348, 308, 343, 333, 374],
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Agora Latency SD (ms)',
+            data: [15, 167, 28, 15, 24],
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Uplink Packet Loss on Latency',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Latency (ms)'
+            },
+            max: 4500
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Packet Loss Rate'
+            }
+          }
+        }
+      }
+    });
+
+    // Downlink packet loss framerate comparison chart
+    const downlinkFramerateCtx = document.getElementById('downlinkFramerateChart').getContext('2d');
+    const downlinkFramerateChart = new Chart(downlinkFramerateCtx, {
+      type: 'line',
+      data: {
+        labels: ['5%', '10%', '20%', '30%', '50%'],
+        datasets: [
+          {
+            label: 'IVS Framerate',
+            data: [15.66, 15.45, 25.79, 22.51, 13.1],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'Agora Framerate',
+            data: [29.22, 30.0, 29.98, 30.0, 29.98],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Downlink Packet Loss on Framerate',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Framerate (fps)'
+            },
+            max: 35
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Packet Loss Rate'
+            }
+          }
+        }
+      }
+    });
+
+    // Downlink packet loss pause rate comparison chart
+    const downlinkPauseRateCtx = document.getElementById('downlinkPauseRateChart').getContext('2d');
+    const downlinkPauseRateChart = new Chart(downlinkPauseRateCtx, {
+      type: 'line',
+      data: {
+        labels: ['5%', '10%', '20%', '30%', '50%'],
+        datasets: [
+          {
+            label: 'IVS Pause Rate (200ms)',
+            data: [0.19, 1.3, 5.92, 14.15, 47.6],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'Agora Pause Rate (200ms)',
+            data: [0.11, 0, 0, 0.08, 0, 1.14],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Downlink Packet Loss on Pause Rate',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Pause Rate (%)'
+            },
+            max: 50
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Packet Loss Rate'
+            }
+          }
+        }
+      }
+    });
+    
+    // Downlink packet loss latency comparison chart
+    const downlinkLatencyCtx = document.getElementById('downlinkLatencyChart').getContext('2d');
+    const downlinkLatencyChart = new Chart(downlinkLatencyCtx, {
+      type: 'bar',
+      data: {
+        labels: ['5%', '10%', '20%', '30%', '50%'],
+        datasets: [
+          {
+            label: 'IVS Latency Median (ms)',
+            data: [268, 271, 284, 325, 659],
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'IVS Latency SD (ms)',
+            data: [14, 16, 25, 42, 176],
+            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Agora Latency Median (ms)',
+            data: [348, 352, 361, 372, 398],
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Agora Latency SD (ms)',
+            data: [12, 14, 19, 28, 47],
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Downlink Packet Loss on Latency',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Latency (ms)'
+            },
+            max: 1000 // Note: The 10% (1000kbps) IVS value is extremely high and would distort the chart
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Packet Loss Rate'
+            }
+          }
+        }
+      }
+    });
+    
+    // Jitter framerate comparison chart (combined uplink and downlink)
+    const jitterFramerateCtx = document.getElementById('jitterFramerateChart').getContext('2d');
+    const jitterFramerateChart = new Chart(jitterFramerateCtx, {
+      type: 'line',
+      data: {
+        labels: ['100ms', '300ms', '600ms'],
+        datasets: [
+          {
+            label: 'IVS Uplink Framerate',
+            data: [16.95, 8.37, 6.34],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'Agora Uplink Framerate',
+            data: [27.35, 26.70, 26.29],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'IVS Downlink Framerate',
+            data: [15.31, 14.89, 12.31],
+            borderColor: 'rgba(255, 206, 86, 1)',
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            tension: 0.1,
+            borderDash: [5, 5]
+          },
+          {
+            label: 'Agora Downlink Framerate',
+            data: [29.98, 29.79, 29.51],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.1,
+            borderDash: [5, 5]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Network Jitter on Framerate',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Framerate (fps)'
+            },
+            max: 35
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Jitter'
+            }
+          }
+        }
+      }
+    });
+
+    // Jitter pause rate comparison chart (combined uplink and downlink)
+    const jitterPauseRateCtx = document.getElementById('jitterPauseRateChart').getContext('2d');
+    const jitterPauseRateChart = new Chart(jitterPauseRateCtx, {
+      type: 'line',
+      data: {
+        labels: ['100ms', '300ms', '600ms'],
+        datasets: [
+          {
+            label: 'IVS Uplink Pause Rate (200ms)',
+            data: [1.95, 25.39, 40.77],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'Agora Uplink Pause Rate (200ms)',
+            data: [0.00, 0.24, 0.08],
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.1
+          },
+          {
+            label: 'IVS Downlink Pause Rate (200ms)',
+            data: [0.00, 1.42, 14.88],
+            borderColor: 'rgba(255, 206, 86, 1)',
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            tension: 0.1,
+            borderDash: [5, 5]
+          },
+          {
+            label: 'Agora Downlink Pause Rate (200ms)',
+            data: [0.00, 0.26, 0.10],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.1,
+            borderDash: [5, 5]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Network Jitter on Pause Rate',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Pause Rate (%)'
+            },
+            max: 45
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Jitter'
+            }
+          }
+        }
+      }
+    });
+    
+    // Jitter latency comparison chart (combined uplink and downlink)
+    const jitterLatencyCtx = document.getElementById('jitterLatencyChart').getContext('2d');
+    const jitterLatencyChart = new Chart(jitterLatencyCtx, {
+      type: 'bar',
+      data: {
+        labels: ['100ms Uplink', '300ms Uplink', '600ms Uplink', '100ms Downlink', '300ms Downlink', '600ms Downlink'],
+        datasets: [
+          {
+            label: 'IVS Latency Median (ms)',
+            data: [418, 551, 687, 538, 643, 657],
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'IVS Latency SD (ms)',
+            data: [121, 766, 845, 22, 55, 75],
+            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Agora Latency Median (ms)',
+            data: [432, 501, 769, 412, 590, 683],
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Agora Latency SD (ms)',
+            data: [41, 117, 100, 18, 54, 62],
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Impact of Network Jitter on Latency',
+            font: { size: 16 }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+          },
+          legend: {
+            position: 'bottom',
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Latency (ms)'
+            },
+            max: 900
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Jitter Condition'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

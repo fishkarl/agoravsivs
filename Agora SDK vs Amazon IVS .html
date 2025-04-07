@@ -493,6 +493,13 @@
       <div class="chart-container">
         <canvas id="networkChart"></canvas>
       </div>
+       <!-- 添加查看详细数据的按钮 -->
+       <div class="view-details-container" style="text-align: center; margin-top: 20px;">
+        <a href="performance.html" class="view-details-btn" style="display: inline-block; padding: 10px 20px; background-color: var(--agora-blue); color: white; text-decoration: none; border-radius: 5px; font-weight: 500; transition: all 0.3s ease;">
+          Detail data for performance evaluation 
+          <span style="margin-left: 5px;">→</span>
+        </a>
+      </div>
     </section>
     
     <section id="platform">
@@ -739,7 +746,7 @@
           },
           {
             label: 'Amazon IVS - 视频质量保持率',
-            data: [100, 80, 65, 10, 5],
+            data: [100, 80, 50, 10, 5],
             borderColor: 'rgba(255, 153, 0, 1)',
             backgroundColor: 'rgba(255, 153, 0, 0.1)',
             tension: 0.4,
