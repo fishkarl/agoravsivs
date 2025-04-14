@@ -30,6 +30,52 @@
       padding: 15px;
       border-radius: 8px;
     }
+    
+    /* 添加视频容器样式 */
+    .video-container {
+      width: 48%;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .video-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2c3e50;
+      text-align: center;
+    }
+    
+    .video-player {
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    /* 修改图表容器布局 */
+    .chart-video-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    
+    /* 响应式布局调整 */
+    @media (max-width: 768px) {
+      .chart-video-row {
+        flex-direction: column;
+      }
+      .chart-box, .video-container {
+        width: 100%;
+      }
+    }
+    
     .summary {
       background-color: #f8f9fa;
       padding: 20px;
@@ -77,18 +123,47 @@
     <h2>Uplink Packet Loss Performance</h2>
   </div>
   
-  <div class="chart-container">
+  <!-- 修改上行丢包帧率图表和视频布局 -->
+  <div class="chart-video-row">
     <div class="chart-box">
       <canvas id="uplinkFramerateChart"></canvas>
     </div>
-    <div class="chart-box">
-      <canvas id="uplinkPauseRateChart"></canvas>
+    <div class="video-container">
+      <div class="video-title">Uplink Packet Loss - Framerate Comparison</div>
+      <video class="video-player" controls preload="metadata">
+        <source src="https://qiuyanli1.oss-cn-shanghai.aliyuncs.com/Uplink_loss.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="play-button" onclick="playVideo(this)" style="margin-top: 10px; padding: 8px 15px; background-color: #099DFD; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Play Video</button>
     </div>
   </div>
   
-  <div class="chart-container">
+  <!-- 修改上行丢包暂停率图表和视频布局 -->
+  <div class="chart-video-row">
+    <div class="chart-box">
+      <canvas id="uplinkPauseRateChart"></canvas>
+    </div>
+    <div class="video-container">
+      <div class="video-title">Uplink Packet Loss - Pause Rate Comparison</div>
+      <video class="video-player" controls preload="metadata">
+        <source src="https://qiuyanli1.oss-cn-shanghai.aliyuncs.com/Uplink_loss.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="play-button" onclick="playVideo(this)" style="margin-top: 10px; padding: 8px 15px; background-color: #099DFD; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Play Video</Video></button>
+    </div>
+  </div>
+  
+  <!-- 修改上行丢包延迟图表和视频布局 -->
+  <div class="chart-video-row">
     <div class="chart-box">
       <canvas id="uplinkLatencyChart"></canvas>
+    </div>
+    <div class="video-container">
+      <div class="video-title">Uplink Packet Loss - Latency Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/uplink_latency_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
   
@@ -171,18 +246,45 @@
     <h2>Downlink Packet Loss Performance</h2>
   </div>
   
-  <div class="chart-container">
+  <!-- 修改下行丢包帧率图表和视频布局 -->
+  <div class="chart-video-row">
     <div class="chart-box">
       <canvas id="downlinkFramerateChart"></canvas>
     </div>
-    <div class="chart-box">
-      <canvas id="downlinkPauseRateChart"></canvas>
+    <div class="video-container">
+      <div class="video-title">Downlink Packet Loss - Framerate Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/downlink_framerate_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
   
-  <div class="chart-container">
+  <!-- 修改下行丢包暂停率图表和视频布局 -->
+  <div class="chart-video-row">
+    <div class="chart-box">
+      <canvas id="downlinkPauseRateChart"></canvas>
+    </div>
+    <div class="video-container">
+      <div class="video-title">Downlink Packet Loss - Pause Rate Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/downlink_pauserate_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  
+  <!-- 修改下行丢包延迟图表和视频布局 -->
+  <div class="chart-video-row">
     <div class="chart-box">
       <canvas id="downlinkLatencyChart"></canvas>
+    </div>
+    <div class="video-container">
+      <div class="video-title">Downlink Packet Loss - Latency Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/downlink_latency_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
   
@@ -265,18 +367,45 @@
     <h2>Network Jitter Performance</h2>
   </div>
   
-  <div class="chart-container">
+  <!-- 修改抖动帧率图表和视频布局 -->
+  <div class="chart-video-row">
     <div class="chart-box">
       <canvas id="jitterFramerateChart"></canvas>
     </div>
-    <div class="chart-box">
-      <canvas id="jitterPauseRateChart"></canvas>
+    <div class="video-container">
+      <div class="video-title">Network Jitter - Framerate Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/jitter_framerate_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
   
-  <div class="chart-container">
+  <!-- 修改抖动暂停率图表和视频布局 -->
+  <div class="chart-video-row">
+    <div class="chart-box">
+      <canvas id="jitterPauseRateChart"></canvas>
+    </div>
+    <div class="video-container">
+      <div class="video-title">Network Jitter - Pause Rate Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/jitter_pauserate_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  
+  <!-- 修改抖动延迟图表和视频布局 -->
+  <div class="chart-video-row">
     <div class="chart-box">
       <canvas id="jitterLatencyChart"></canvas>
+    </div>
+    <div class="video-container">
+      <div class="video-title">Network Jitter - Latency Comparison</div>
+      <video class="video-player" controls>
+        <source src="https://example.com/videos/jitter_latency_comparison.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
   
@@ -394,6 +523,7 @@
   </div>
 
   <script>
+    // 原有的图表脚本保持不变
     // Uplink packet loss framerate comparison chart
     const uplinkFramerateCtx = document.getElementById('uplinkFramerateChart').getContext('2d');
     const uplinkFramerateChart = new Chart(uplinkFramerateCtx, {
@@ -989,6 +1119,17 @@
         }
       }
     });
+     // 添加视频播放功能
+     function playVideo(button) {
+      const videoContainer = button.parentElement;
+      const video = videoContainer.querySelector('video');
+      
+      if (video) {
+        video.play();
+        // 播放后聚焦到视频
+        video.scrollIntoView({behavior: "smooth", block: "center"});
+      }
+    }
   </script>
 </body>
 </html>

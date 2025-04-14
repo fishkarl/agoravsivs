@@ -6,7 +6,7 @@ let platformChart;
 let radarChart;
 
 // Current language
-let currentLanguage = 'zh'; // Default language is Chinese
+let currentLanguage = 'en'; // Default language is Chinese
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
