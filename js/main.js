@@ -789,7 +789,7 @@ function initVideoPlayer() {
     
     // 创建iframe
     const iframe = document.createElement('iframe');
-    iframe.src = "https://qiuyanli1.oss-cn-shanghai.aliyuncs.com/3%E6%9C%8826%E6%97%A5%282%29.mp4";
+    iframe.src = "https://dna6umel1n1b.cloudfront.net/03-26-2025.mp4";
     iframe.setAttribute('allowfullscreen', '');
     iframe.style.width = '100%';
     iframe.style.height = '100%';
