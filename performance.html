@@ -116,7 +116,7 @@
   
   <div class="summary">
     <h2>Overview</h2>
-    <p>This analysis compares the performance of IVS and Agora (RTC) under various network conditions, focusing on the impact of packet loss on video quality metrics including framerate, pause rate, and latency.</p>
+    <p>This analysis compares the performance of IVS and Agora (RTC) under various network conditions, focusing on the impact of packet loss on video quality metrics including framerate, frozen rate, and latency.</p>
   </div>
   
   <div class="section-header">
@@ -144,7 +144,7 @@
       <canvas id="uplinkPauseRateChart"></canvas>
     </div>
     <div class="video-container">
-      <div class="video-title">Uplink Packet Loss - Pause Rate Comparison</div>
+      <div class="video-title">Uplink Packet Loss - frozen rate Comparison</div>
       <video class="video-player" controls preload="metadata">
         <source src="https://dna6umel1n1b.cloudfront.net/Uplink_loss.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -173,9 +173,8 @@
     <p>Significant differences exist between IVS and Agora(RTC) in response to uplink packet loss:</p>
     <ul>
       <li><strong>Framerate Impact</strong>: As uplink packet loss increases, IVS framerate drops dramatically, from 17.22fps at 5% loss to only 0.28fps at 50% loss. In contrast, Agora maintains a stable framerate around 27fps even at 50% packet loss.</li>
-      <li><strong>Pause Rate Impact</strong>: IVS shows extremely high pause rates in uplink packet loss environments, reaching 45.2% PAUSE_RATE_200MS at just 5% loss, and 99.23% at 50% loss. Agora maintains very low pause rates even in high packet loss environments, with a maximum of only 0.59%.</li>
+      <li><strong>frozen rate Impact</strong>: IVS shows extremely high frozen rates in uplink packet loss environments, reaching 45.2% PAUSE_RATE_200MS at just 5% loss, and 99.23% at 50% loss. Agora maintains very low frozen rates even in high packet loss environments, with a maximum of only 0.59%.</li>
       <li><strong>Latency Impact</strong>: IVS shows significant latency variability under packet loss conditions, with standard deviation values increasing dramatically as packet loss increases. Agora maintains more consistent latency even under adverse network conditions.</li>
-      <li><strong>Bandwidth Limitation</strong>: When uplink bandwidth is limited to 1000kbps with 10% packet loss, both IVS and Agora are affected, but Agora's framerate drops more significantly (to 9.42fps), indicating that Agora's advantage diminishes in low-bandwidth high-loss environments.</li>
     </ul>
   </div>
 
@@ -185,10 +184,10 @@
       <tr>
         <th>Packet Loss (%)</th>
         <th>IVS Framerate</th>
-        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS frozen rate 200ms (%)</th>
         <th>IVS Latency Median/SD (ms)</th>
         <th>Agora Framerate</th>
-        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora frozen rate 200ms (%)</th>
         <th>Agora Latency Median/SD (ms)</th>
       </tr>
     </thead>
@@ -267,7 +266,7 @@
       <canvas id="downlinkPauseRateChart"></canvas>
     </div>
     <div class="video-container">
-      <div class="video-title">Downlink Packet Loss - Pause Rate Comparison</div>
+      <div class="video-title">Downlink Packet Loss - frozen rate Comparison</div>
       <video class="video-player" controls>
         <source src="https://example.com/videos/downlink_pauserate_comparison.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -294,9 +293,8 @@
     <p>There are also notable differences between IVS and Agora(RTC) in response to downlink packet loss:</p>
     <ul>
       <li><strong>Framerate Impact</strong>: As downlink packet loss increases, IVS framerate shows a gradual decline from 15.66fps at 5% loss to 13.1fps at 50% loss. Agora maintains a consistent framerate of approximately 30fps across all packet loss rates.</li>
-      <li><strong>Pause Rate Impact</strong>: IVS pause rates increase significantly with higher downlink packet loss, reaching 47.6% PAUSE_RATE_200MS at 50% loss. Agora maintains extremely low pause rates across all downlink packet loss conditions, with a maximum of only 0.11%.</li>
+      <li><strong>frozen rate Impact</strong>: IVS frozen rates increase significantly with higher downlink packet loss, reaching 47.6% PAUSE_RATE_200MS at 50% loss. Agora maintains extremely low frozen rates across all downlink packet loss conditions, with a maximum of only 0.11%.</li>
       <li><strong>Latency Impact</strong>: IVS shows increasing latency as downlink packet loss increases, while Agora maintains more consistent latency values even under adverse network conditions.</li>
-      <li><strong>Bandwidth Limitation</strong>: When downlink bandwidth is limited to 1000kbps with 10% packet loss, IVS maintains 15.24fps while Agora drops to 12.58fps, indicating that the performance gap narrows in low-bandwidth high-loss environments.</li>
     </ul>
   </div>
 
@@ -306,10 +304,10 @@
       <tr>
         <th>Packet Loss (%)</th>
         <th>IVS Framerate</th>
-        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS frozen rate 200ms (%)</th>
         <th>IVS Latency Median/SD (ms)</th>
         <th>Agora Framerate</th>
-        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora frozen rate 200ms (%)</th>
         <th>Agora Latency Median/SD (ms)</th>
       </tr>
     </thead>
@@ -388,7 +386,7 @@
       <canvas id="jitterPauseRateChart"></canvas>
     </div>
     <div class="video-container">
-      <div class="video-title">Network Jitter - Pause Rate Comparison</div>
+      <div class="video-title">Network Jitter - frozen rate Comparison</div>
       <video class="video-player" controls>
         <source src="https://example.com/videos/jitter_pauserate_comparison.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -415,7 +413,7 @@
     <p>Network jitter also has different impacts on IVS and Agora performance:</p>
     <ul>
       <li><strong>Framerate Impact</strong>: As jitter increases, IVS framerate gradually decreases, from 16.95fps at 100ms jitter to 6.34fps at 600ms jitter. Agora maintains a more stable framerate, only dropping slightly from 27.35fps to 26.29fps across the same jitter range.</li>
-      <li><strong>Pause Rate Impact</strong>: IVS pause rates increase significantly with higher jitter, reaching 40.77% PAUSE_RATE_200MS at 600ms jitter. Agora maintains very low pause rates even with high jitter, with a maximum of only 0.24%.</li>
+      <li><strong>frozen rate Impact</strong>: IVS frozen rates increase significantly with higher jitter, reaching 40.77% PAUSE_RATE_200MS at 600ms jitter. Agora maintains very low frozen rates even with high jitter, with a maximum of only 0.24%.</li>
       <li><strong>Latency Impact</strong>: With increasing jitter, both solutions show increased latency, but Agora maintains more consistent latency values with lower standard deviations compared to IVS.</li>
     </ul>
   </div>
@@ -426,10 +424,10 @@
       <tr>
         <th>Jitter (ms)</th>
         <th>IVS Framerate</th>
-        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS frozen rate 200ms (%)</th>
         <th>IVS Latency Median/SD (ms)</th>
         <th>Agora Framerate</th>
-        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora frozen rate 200ms (%)</th>
         <th>Agora Latency Median/SD (ms)</th>
       </tr>
     </thead>
@@ -470,10 +468,10 @@
       <tr>
         <th>Jitter (ms)</th>
         <th>IVS Framerate</th>
-        <th>IVS Pause Rate 200ms (%)</th>
+        <th>IVS frozen rate 200ms (%)</th>
         <th>IVS Latency Median/SD (ms)</th>
         <th>Agora Framerate</th>
-        <th>Agora Pause Rate 200ms (%)</th>
+        <th>Agora frozen rate 200ms (%)</th>
         <th>Agora Latency Median/SD (ms)</th>
       </tr>
     </thead>
@@ -514,9 +512,9 @@
     <h2>Overall Conclusions</h2>
     <p>Based on the analysis of test data, we can draw the following conclusions:</p>
     <ul>
-      <li><strong>Uplink Packet Loss Adaptability</strong>: Agora performs excellently in uplink packet loss environments, maintaining stable framerate and extremely low pause rates even at high packet loss rates (50%). IVS performance degrades dramatically with uplink packet loss, with user experience significantly affected at packet loss rates above 10%.</li>
-      <li><strong>Downlink Packet Loss Adaptability</strong>: Agora also performs excellently in downlink packet loss environments, maintaining stable high framerates and low pause rates across all packet loss rates. IVS performs better with downlink packet loss than uplink, but still shows noticeable performance degradation as packet loss increases.</li>
-      <li><strong>Jitter Adaptability</strong>: Agora demonstrates superior resilience to network jitter in both uplink and downlink scenarios, maintaining stable framerates and low pause rates even at high jitter values (600ms). IVS shows progressive degradation as jitter increases.</li>
+      <li><strong>Uplink Packet Loss Adaptability</strong>: Agora performs excellently in uplink packet loss environments, maintaining stable framerate and extremely low frozen rates even at high packet loss rates (50%). IVS performance degrades dramatically with uplink packet loss, with user experience significantly affected at packet loss rates above 10%.</li>
+      <li><strong>Downlink Packet Loss Adaptability</strong>: Agora also performs excellently in downlink packet loss environments, maintaining stable high framerates and low frozen rates across all packet loss rates. IVS performs better with downlink packet loss than uplink, but still shows noticeable performance degradation as packet loss increases.</li>
+      <li><strong>Jitter Adaptability</strong>: Agora demonstrates superior resilience to network jitter in both uplink and downlink scenarios, maintaining stable framerates and low frozen rates even at high jitter values (600ms). IVS shows progressive degradation as jitter increases.</li>
       <li><strong>Latency Performance</strong>: Agora generally maintains more consistent latency values with lower standard deviations compared to IVS, particularly in high packet loss scenarios. This suggests more stable and predictable video delivery.</li>
       <li><strong>Bandwidth Limitation Impact</strong>: In low-bandwidth high-packet-loss environments, the performance gap between the two solutions narrows, but overall Agora still demonstrates better network adaptability.</li>
       <li><strong>Overall Assessment</strong>: From a network adaptability perspective, Agora demonstrates better stability and resistance to interference across various network conditions, with particularly notable advantages in poor uplink network quality scenarios.</li>
@@ -583,7 +581,7 @@
       }
     });
 
-    // Uplink packet loss pause rate comparison chart
+    // Uplink packet loss frozen rate comparison chart
     const uplinkPauseRateCtx = document.getElementById('uplinkPauseRateChart').getContext('2d');
     const uplinkPauseRateChart = new Chart(uplinkPauseRateCtx, {
       type: 'line',
@@ -591,14 +589,14 @@
         labels: ['5%', '10%', '20%', '30%', '50%'],
         datasets: [
           {
-            label: 'IVS Pause Rate (200ms)',
+            label: 'IVS frozen rate (200ms)',
             data: [45.2, 70.36, 93.76, 97.14, 99.23],
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             tension: 0.1
           },
           {
-            label: 'Agora Pause Rate (200ms)',
+            label: 'Agora frozen rate (200ms)',
             data: [0, 0, 0.18, 0.59, 0.09],
             borderColor: 'rgba(54, 162, 235, 1)',
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -611,7 +609,7 @@
         plugins: {
           title: {
             display: true,
-            text: 'Impact of Uplink Packet Loss on Pause Rate',
+            text: 'Impact of Uplink Packet Loss on frozen rate',
             font: { size: 16 }
           },
           tooltip: {
@@ -627,7 +625,7 @@
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Pause Rate (%)'
+              text: 'frozen rate (%)'
             },
             max: 100
           },
@@ -771,7 +769,7 @@
       }
     });
 
-    // Downlink packet loss pause rate comparison chart
+    // Downlink packet loss frozen rate comparison chart
     const downlinkPauseRateCtx = document.getElementById('downlinkPauseRateChart').getContext('2d');
     const downlinkPauseRateChart = new Chart(downlinkPauseRateCtx, {
       type: 'line',
@@ -779,14 +777,14 @@
         labels: ['5%', '10%', '20%', '30%', '50%'],
         datasets: [
           {
-            label: 'IVS Pause Rate (200ms)',
+            label: 'IVS frozen rate (200ms)',
             data: [0.19, 1.3, 5.92, 14.15, 47.6],
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             tension: 0.1
           },
           {
-            label: 'Agora Pause Rate (200ms)',
+            label: 'Agora frozen rate (200ms)',
             data: [0.11, 0, 0, 0.08, 0, 1.14],
             borderColor: 'rgba(54, 162, 235, 1)',
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -799,7 +797,7 @@
         plugins: {
           title: {
             display: true,
-            text: 'Impact of Downlink Packet Loss on Pause Rate',
+            text: 'Impact of Downlink Packet Loss on frozen rate',
             font: { size: 16 }
           },
           tooltip: {
@@ -815,7 +813,7 @@
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Pause Rate (%)'
+              text: 'frozen rate (%)'
             },
             max: 50
           },
@@ -975,7 +973,7 @@
       }
     });
 
-    // Jitter pause rate comparison chart (combined uplink and downlink)
+    // Jitter frozen rate comparison chart (combined uplink and downlink)
     const jitterPauseRateCtx = document.getElementById('jitterPauseRateChart').getContext('2d');
     const jitterPauseRateChart = new Chart(jitterPauseRateCtx, {
       type: 'line',
@@ -983,21 +981,21 @@
         labels: ['100ms', '300ms', '600ms'],
         datasets: [
           {
-            label: 'IVS Uplink Pause Rate (200ms)',
+            label: 'IVS Uplink frozen rate (200ms)',
             data: [1.95, 25.39, 40.77],
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             tension: 0.1
           },
           {
-            label: 'Agora Uplink Pause Rate (200ms)',
+            label: 'Agora Uplink frozen rate (200ms)',
             data: [0.00, 0.24, 0.08],
             borderColor: 'rgba(54, 162, 235, 1)',
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             tension: 0.1
           },
           {
-            label: 'IVS Downlink Pause Rate (200ms)',
+            label: 'IVS Downlink frozen rate (200ms)',
             data: [0.00, 1.42, 14.88],
             borderColor: 'rgba(255, 206, 86, 1)',
             backgroundColor: 'rgba(255, 206, 86, 0.2)',
@@ -1005,7 +1003,7 @@
             borderDash: [5, 5]
           },
           {
-            label: 'Agora Downlink Pause Rate (200ms)',
+            label: 'Agora Downlink frozen rate (200ms)',
             data: [0.00, 0.26, 0.10],
             borderColor: 'rgba(75, 192, 192, 1)',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -1019,7 +1017,7 @@
         plugins: {
           title: {
             display: true,
-            text: 'Impact of Network Jitter on Pause Rate',
+            text: 'Impact of Network Jitter on frozen rate',
             font: { size: 16 }
           },
           tooltip: {
@@ -1035,7 +1033,7 @@
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Pause Rate (%)'
+              text: 'frozen rate (%)'
             },
             max: 45
           },
