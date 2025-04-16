@@ -173,7 +173,7 @@
     <p>Significant differences exist between IVS and Agora(RTC) in response to uplink packet loss:</p>
     <ul>
       <li><strong>Framerate Impact</strong>: As uplink packet loss increases, IVS framerate drops dramatically, from 17.22fps at 5% loss to only 0.28fps at 50% loss. In contrast, Agora maintains a stable framerate around 27fps even at 50% packet loss.</li>
-      <li><strong>frozen rate Impact</strong>: IVS shows extremely high frozen rates in uplink packet loss environments, reaching 45.2% PAUSE_RATE_200MS at just 5% loss, and 99.23% at 50% loss. Agora maintains very low frozen rates even in high packet loss environments, with a maximum of only 0.59%.</li>
+      <li><strong>frozen rate Impact</strong>: IVS shows extremely high frozen rates in uplink packet loss environments, reaching 45.2% FROZEN_RATE_200MS at just 5% loss, and 99.23% at 50% loss. Agora maintains very low frozen rates even in high packet loss environments, with a maximum of only 0.59%.</li>
       <li><strong>Latency Impact</strong>: IVS shows significant latency variability under packet loss conditions, with standard deviation values increasing dramatically as packet loss increases. Agora maintains more consistent latency even under adverse network conditions.</li>
     </ul>
   </div>
@@ -293,7 +293,7 @@
     <p>There are also notable differences between IVS and Agora(RTC) in response to downlink packet loss:</p>
     <ul>
       <li><strong>Framerate Impact</strong>: As downlink packet loss increases, IVS framerate shows a gradual decline from 15.66fps at 5% loss to 13.1fps at 50% loss. Agora maintains a consistent framerate of approximately 30fps across all packet loss rates.</li>
-      <li><strong>frozen rate Impact</strong>: IVS frozen rates increase significantly with higher downlink packet loss, reaching 47.6% PAUSE_RATE_200MS at 50% loss. Agora maintains extremely low frozen rates across all downlink packet loss conditions, with a maximum of only 0.11%.</li>
+      <li><strong>frozen rate Impact</strong>: IVS frozen rates increase significantly with higher downlink packet loss, reaching 47.6% FROZEN_RATE_200MS at 50% loss. Agora maintains extremely low frozen rates across all downlink packet loss conditions, with a maximum of only 0.11%.</li>
       <li><strong>Latency Impact</strong>: IVS shows increasing latency as downlink packet loss increases, while Agora maintains more consistent latency values even under adverse network conditions.</li>
     </ul>
   </div>
@@ -413,7 +413,7 @@
     <p>Network jitter also has different impacts on IVS and Agora performance:</p>
     <ul>
       <li><strong>Framerate Impact</strong>: As jitter increases, IVS framerate gradually decreases, from 16.95fps at 100ms jitter to 6.34fps at 600ms jitter. Agora maintains a more stable framerate, only dropping slightly from 27.35fps to 26.29fps across the same jitter range.</li>
-      <li><strong>frozen rate Impact</strong>: IVS frozen rates increase significantly with higher jitter, reaching 40.77% PAUSE_RATE_200MS at 600ms jitter. Agora maintains very low frozen rates even with high jitter, with a maximum of only 0.24%.</li>
+      <li><strong>frozen rate Impact</strong>: IVS frozen rates increase significantly with higher jitter, reaching 40.77% FROZEN_RATE_200MS at 600ms jitter. Agora maintains very low frozen rates even with high jitter, with a maximum of only 0.24%.</li>
       <li><strong>Latency Impact</strong>: With increasing jitter, both solutions show increased latency, but Agora maintains more consistent latency values with lower standard deviations compared to IVS.</li>
     </ul>
   </div>
