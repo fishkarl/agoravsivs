@@ -97,7 +97,7 @@
         "overview": "设备覆盖是评估实时音视频SDK的重要指标。Agora SDK和Amazon IVS在不同设备上的支持情况直接影响用户体验和市场覆盖率<span class=\"citation\">[3]</span>。",
         "ios": {
           "title": "iOS设备支持",
-          "description": "Agora SDK和Amazon IVS在iOS设备上的支持情况如下图所示。Agora SDK支持更广泛的iOS设备型号和系统版本<span class=\"citation\">[1]</span>。",
+          "description": "下图展示了Agora SDK在iOS设备上的支持情况，Amazon IVS由于缺少具体数据无法展示<span class=\"citation\">[1]</span>。",
           "version": "iOS版本支持",
           "compatibility": "设备兼容性",
           "agora_version": "支持iOS 9.0及以上所有版本，包括最新的iOS 17<span class=\"citation\">[1]</span>",

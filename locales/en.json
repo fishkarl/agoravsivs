@@ -97,7 +97,7 @@
         "overview": "Device coverage is an important metric for evaluating real-time audio and video SDKs. The support of Agora SDK and Amazon IVS on different devices directly affects user experience and market coverage<span class=\"citation\">[3]</span>.",
         "ios": {
           "title": "iOS Device Support",
-          "description": "The support of Agora SDK and Amazon IVS on iOS devices is shown below. Agora SDK supports a wider range of iOS device models and system versions<span class=\"citation\">[1]</span>.",
+          "description": "The chart below shows the support of Agora SDK on iOS devices. Amazon IVS is not shown due to lack of specific data<span class=\"citation\">[1]</span>.",
           "version": "iOS Version Support",
           "compatibility": "Device Compatibility",
           "agora_version": "Supports all versions of iOS 9.0 and above, including the latest iOS 17<span class=\"citation\">[1]</span>",

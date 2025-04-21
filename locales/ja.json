@@ -97,7 +97,7 @@
       "overview": "デバイスサポートは、リアルタイム音声・映像SDKを評価する重要な指標です。Agora SDKとAmazon IVSの異なるデバイスでのサポート状況は、ユーザー体験と市場カバレッジに直接影響を与えます<span class=\"citation\">[3]</span>。",
       "ios": {
         "title": "iOSデバイスサポート",
-        "description": "Agora SDKとAmazon IVSのiOSデバイスでのサポート状況は以下の通りです。Agora SDKはより広範なiOSデバイスモデルとシステムバージョンをサポートしています<span class=\"citation\">[1]</span>。",
+        "description": "下図はAgora SDKのiOSデバイス対応状況を示しています。Amazon IVSは具体的なデータがないため表示していません<span class=\"citation\">[1]</span>。",
         "version": "iOSバージョンサポート",
         "compatibility": "デバイス互換性",
         "agora_version": "iOS 9.0以降のすべてのバージョンをサポート、最新のiOS 17を含む<span class=\"citation\">[1]</span>",
